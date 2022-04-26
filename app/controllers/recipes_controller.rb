@@ -1,11 +1,12 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+
   def index
     @recipes = Recipe.all
     # @recipes = Recipe.paginate(page: params[:page], per_page: 5)
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
   end
 
   def new
@@ -23,7 +24,24 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+  
+  def update
+    if @recipe.update(recipe_params)
+      flash[:success] = "Recipe was updated successfully!"
+      redirect_to recipe_path(@recipe)
+    else
+      render 'edit'
+    end
+  end
+
   private
+
+    def set_recipe
+      @recipe = Recipe.find(params[:id])
+    end
 
     def recipe_params
       params.require(:recipe).permit(:name, :description)

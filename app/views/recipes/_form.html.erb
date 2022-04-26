@@ -1,0 +1,22 @@
+<%= render 'shared/errors', obj: @recipe %>
+
+<div class="row">
+  <%= form_for(@recipe, :html => {role: "form"}) do |f| %>
+    <div class="col mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <div class="col-4">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name of recipe", autofocus: true %>
+      </div>
+    </div>
+    <div class="mb-3">
+      <%= f.label :description, class: "form-label" %>
+      <div class="col-8">
+        <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter steps to create recipe" %>
+      </div>
+    </div>
+    <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
+  <% end %>
+  <div class="offset-4 colormatch">
+    [ <%= link_to "Cancel request and return to recipes listing", recipes_path %> ]
+  </div>
+</div>

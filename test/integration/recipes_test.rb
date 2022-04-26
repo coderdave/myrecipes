@@ -48,7 +48,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
       post recipes_path, params: { recipe: { name: " ", description: " " } }
     end
     assert_template 'recipes/new'
-    assert_select 'h2.panel-title'
-    assert_select 'div.panel-body'
+    assert_select 'div.bg-danger'
+    assert_select 'div.card-body'
   end
 end
