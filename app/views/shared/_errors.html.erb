@@ -1,14 +1,14 @@
-<% if @recipe.errors.any? %>
+<% if obj.errors.any? %>
   <div class="row">
     <div class="col">
       <div class="col-8 card text-white bg-danger mb-3">
         <div class="card-body">
           <h5 class="card-title">
-            <%= pluralize(@recipe.errors.count, "error") %>
-            prohibited this <%= @recipe.class %> from being saved:
+            <%= pluralize(obj.errors.count, "error") %>
+            prohibited this <%= obj.class %> from being saved:
           </h5>
           <ul class="card-text">
-            <% @recipe.errors.full_messages.each do |msg| %>
+            <% obj.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
             <% end %>
           </ul>
