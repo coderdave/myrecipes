@@ -21,32 +21,22 @@
   </div>
 <% end %>
 <div class="row">
-  <div class="col-md-12">
-    <%= form_for(@recipe, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :name %>
-        </div>
-        <div class="col-md-8">
-          <%= f.text_field :name, class: "form-control", placeholder: "Name of recipe", autofocus: true %>
-        </div>
+  <%= form_for(@recipe, :html => {role: "form"}) do |f| %>
+    <div class="col mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <div class="col-4">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name of recipe", autofocus: true %>
       </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :description %>
-        </div>
-        <div class="col-md-8">
-          <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter steps to create recipe" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-          <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
-        </div>
-      </div>
-    <% end %>
-    <div class="col-md-4 col-md-offset-4 colormatch">
-      [ <%= link_to "Cancel request and return to recipes listing", recipes_path %> ]
     </div>
+    <div class="mb-3">
+      <%= f.label :description, class: "form-label" %>
+      <div class="col-8">
+        <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter steps to create recipe" %>
+      </div>
+    </div>
+    <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
+  <% end %>
+  <div class="offset-4 colormatch">
+    [ <%= link_to "Cancel request and return to recipes listing", recipes_path %> ]
   </div>
 </div>
