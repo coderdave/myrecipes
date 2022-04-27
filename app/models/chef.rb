@@ -3,11 +3,13 @@ class Chef < ApplicationRecord
   
   has_many :recipes, dependent: :destroy
 
-
   validates :chefname, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
    
   before_save { self.email = email.downcase }
+
+  has_secure_password
 end
