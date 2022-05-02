@@ -11,7 +11,7 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   end
   
   test "reject an invalid edit" do
-    # sign_in_as(@chef, "password")
+    sign_in_as(@chef, "password")
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
     patch chef_path(@chef), params: { chef: { chefname: " ", email: "mashrur@example.com" } }
@@ -21,7 +21,7 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   end
   
   test "accept valid edit" do
-    # sign_in_as(@chef, "password")
+    sign_in_as(@chef, "password")
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
     patch chef_path(@chef), params: { chef: { chefname: "mashrur1", email: "mashrur1@example.com" } }
@@ -32,17 +32,17 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     assert_match "mashrur1@example.com", @chef.email
   end
   
-  test "accept edit attempt by admin user" do
-    # sign_in_as(@admin_user, "password")
-    get edit_chef_path(@chef)
-    assert_template 'chefs/edit'
-    patch chef_path(@chef), params: { chef: { chefname: "mashrur3", email: "mashrur3@example.com" } }
-    assert_redirected_to @chef
-    assert_not flash.empty?
-    @chef.reload
-    assert_match "mashrur3", @chef.chefname
-    assert_match "mashrur3@example.com", @chef.email
-  end
+  # test "accept edit attempt by admin user" do
+  #   sign_in_as(@admin_user, "password")
+  #   get edit_chef_path(@chef)
+  #   assert_template 'chefs/edit'
+  #   patch chef_path(@chef), params: { chef: { chefname: "mashrur3", email: "mashrur3@example.com" } }
+  #   assert_redirected_to @chef
+  #   assert_not flash.empty?
+  #   @chef.reload
+  #   assert_match "mashrur3", @chef.chefname
+  #   assert_match "mashrur3@example.com", @chef.email
+  # end
   
   # test "redirect edit attempt by another non-admin user" do
   #   # sign_in_as(@chef2, "password")
