@@ -2,6 +2,7 @@ class Chef < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   has_many :recipes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :chefname, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
