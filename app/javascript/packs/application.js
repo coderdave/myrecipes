@@ -9,7 +9,6 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 
 require("@popperjs/core");
-
 import "bootstrap";
 
 // Import the specific modules you may need (Modal, Alert, etc)
@@ -17,6 +16,12 @@ import { Tooltip, Popover } from "bootstrap";
 
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss");
+
+window.scrollToBottom = function () {
+  if ($("#messages").length > 0) {
+    $("#messages").scrollTop($("#messages")[0].scrollHeight);
+  }
+};
 
 // If you're using Turbolinks. Otherwise simply use: jQuery(function () {
 document.addEventListener("turbolinks:load", () => {
@@ -31,9 +36,12 @@ document.addEventListener("turbolinks:load", () => {
   var popoverTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="popover"]')
   );
+
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new Popover(popoverTriggerEl);
   });
+
+  scrollToBottom();
 });
 
 Rails.start();

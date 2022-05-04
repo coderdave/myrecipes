@@ -3,6 +3,7 @@ class Chef < ApplicationRecord
   
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :chefname, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
