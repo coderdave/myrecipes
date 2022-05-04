@@ -44,7 +44,7 @@
         <div class="mb-3">
            <%= f.label :description, "Comment", class: "form-label" %>
           <div class="col-8">
-            <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "Enter Comment Here" %>
+            <%= f.text_area :description, id: 'recipe_comment', rows: 5, class: "form-control", placeholder: "Enter Comment Here" %>
           </div>
         </div>
         <%= f.submit "Submit Comment", class: "btn btn-primary btn-lg" %>
