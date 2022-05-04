@@ -40,7 +40,7 @@
     <div class="col-8 offset-2 mt-3">
       <h3>Comments: </h3>
       <hr />
-      <%= form_for([@recipe, @comment], remote: false, html: {role: "form"}) do |f| %>
+      <%= form_for([@recipe, @comment], remote: true, html: { role: "form" }) do |f| %>
         <div class="mb-3">
            <%= f.label :description, "Comment", class: "form-label" %>
           <div class="col-8">
@@ -57,6 +57,7 @@
 <% if @recipe.comments.any? %>
   <div class="col-8 offset-2 mt-3">
     <h3>Prior Comments: </h3>
+    <%# JS event listener (see recipe_comments_channel.js) %>
     <div id="messages">
       <%= render partial: 'comments/comments', object: @comments %>
     </div>
