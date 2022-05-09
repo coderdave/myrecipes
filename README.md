@@ -47,10 +47,16 @@ Install JavaScript dependencies:
 $ npm install
 ```
 
-Next, your local mysql database is expecting a password. If you want, check out the `database.yml` file for details on how rails connects to mysql. To set up credentials for the development database, run the following command:
+Next, your local mysql database is expecting a password. If you want, check out the `database.yml` file for details on how rails connects to mysql. To set up credentials for the development database, run the following command (on mac):
 
 ```
 $ EDITOR='code --wait' rails credentials:edit --environment development
+```
+
+For windows, run the following command
+
+```
+EDITOR="code --wait" bin/rails credentials:edit -e development
 ```
 
 VS Code will open to the credentials configuration file for development. Now insert the following with the password you set for mysql when you installed it.
@@ -60,13 +66,19 @@ mysql:
   db_password: your_password
 ```
 
-Then, to set up credentials for the test database, run the following command:
+Save and close the file. Then, to set up credentials for the test database, run the following command on a mac:
 
 ```
 $ EDITOR='code --wait' rails credentials:edit --environment test
 ```
 
-Again, insert the same information you entered for the development database.
+For windows, run the following command:
+
+```
+EDITOR="code --wait" bin/rails credentials:edit -e test
+```
+
+Again, insert the same information you entered for the development database, then save and close the file.
 
 ```
 mysql:
