@@ -4,15 +4,15 @@ Based on the "Professional Ruby on Rails Developer with Rails 5" course on Udemy
 
 ## Getting started
 
-First of all, do you have ruby v2.75 and rails v6.1.5 installed with mysql?
-IMPORTANT: When setting up mysql, please create a password to connect to your local database. You will need this password later when setting up database credentials.
+First of all, do you have ruby v2.75 and rails v6.1.5 installed with postgres?
+IMPORTANT: Remember the password you created! You will need this password later when setting up database credentials.
 
 - Rails install for Windows 10: https://gorails.com/setup/windows/10
 - Rails install for macOS: https://gorails.com/setup/osx/12-monterey
 
 Do you have node? If not, install that too (version of node doesn't matter):
 
-- Node install: https://heynode.com/tutorial/install-nodejs-locally-nvm/
+- Node install: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
 ---
 
@@ -47,7 +47,7 @@ Install JavaScript dependencies:
 $ npm install
 ```
 
-Next, your local mysql database is expecting a password. If you want, check out the `database.yml` file for details on how rails connects to mysql. To set up credentials for the development database, run the following command (on mac):
+Next, your local postgres database is expecting a password. If you want, check out the `database.yml` file for details on how rails connects to postgres. To set up credentials for the development database, run the following command (on mac):
 
 ```
 $ EDITOR='code --wait' rails credentials:edit --environment development
@@ -56,13 +56,13 @@ $ EDITOR='code --wait' rails credentials:edit --environment development
 For windows, run the following command
 
 ```
-EDITOR="code --wait" bin/rails credentials:edit -e development
+EDITOR="code --wait" rails credentials:edit -e development
 ```
 
-VS Code will open to the credentials configuration file for development. Now insert the following with the password you set for mysql when you installed it.
+VS Code will open to the credentials configuration file for development. Now insert the following with the password you set for postgres when you installed it.
 
 ```
-mysql:
+pg:
   db_password: your_password
 ```
 
@@ -75,13 +75,13 @@ $ EDITOR='code --wait' rails credentials:edit --environment test
 For windows, run the following command:
 
 ```
-EDITOR="code --wait" bin/rails credentials:edit -e test
+EDITOR="code --wait" rails credentials:edit -e test
 ```
 
 Again, insert the same information you entered for the development database, then save and close the file.
 
 ```
-mysql:
+pg:
   db_password: your_password
 ```
 
