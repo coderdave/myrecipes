@@ -44,7 +44,7 @@ $ bundle install
 Install JavaScript dependencies:
 
 ```
-$ npm install
+$ yarn install
 ```
 
 Next, your local postgres database is expecting a password. If you want, check out the `database.yml` file for details on how rails connects to postgres. To set up credentials for the development database, run the following command (on mac):
