@@ -10,9 +10,9 @@ IMPORTANT: Remember the password you created! You will need this password later 
 - Rails install for Windows 10: https://gorails.com/setup/windows/10
 - Rails install for macOS: https://gorails.com/setup/osx/12-monterey
 
-Do you have node? If not, install that too (version of node doesn't matter):
+Do you have yarn installed? If not, install that too (version of yarn doesn't matter):
 
-- Node install: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+- Yarn install: https://linuxize.com/post/how-to-install-yarn-on-ubuntu-20-04/
 
 ---
 
