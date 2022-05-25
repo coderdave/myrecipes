@@ -2,7 +2,11 @@ development:
   adapter: postgresql
   database: myrecipes_development
   username: postgres
+<<<<<<< HEAD
   password: 220690
+=======
+  password: 123456
+>>>>>>> a009f56d0d5f3608c1974bcc717e3e3847f322be
   host: localhost
   prepared_statements: false
 
@@ -10,6 +14,10 @@ test:
   adapter: postgresql
   database: myrecipes_test
   username: postgres
+<<<<<<< HEAD
   password: 220690
+=======
+  password: 123456
+>>>>>>> a009f56d0d5f3608c1974bcc717e3e3847f322be
   host: localhost
   prepared_statements: false
