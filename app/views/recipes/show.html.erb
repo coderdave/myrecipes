@@ -1,4 +1,9 @@
 <%= render 'shared/page_title', title: @recipe.name %>
+      <% if @recipe.images.attached? %>
+        <% @recipe.images.each do |image|  %>
+          <%= image_tag image, style:"width:200px; display: block;" %>
+        <% end %>
+      <%end%>
 
 <div class="col-8 offset-2 card card-body bg-light">
   <h4 class="center description"><strong>Steps: </strong></h4>
