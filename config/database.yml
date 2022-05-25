@@ -2,7 +2,11 @@ development:
   adapter: postgresql
   database: myrecipes_development
   username: postgres
+<<<<<<< HEAD
   password: admin123
+=======
+  password: cadce851215
+>>>>>>> cf4a9869357bf9f7870dacee3e86f4c3fd1bb078
   host: localhost
   port: 5432
   prepared_statements: false
@@ -11,7 +15,11 @@ test:
   adapter: postgresql
   database: myrecipes_test
   username: postgres
+<<<<<<< HEAD
   password: admin123
+=======
+  password: cadce851215
+>>>>>>> cf4a9869357bf9f7870dacee3e86f4c3fd1bb078
   host: localhost
   port: 5432
   prepared_statements: false
