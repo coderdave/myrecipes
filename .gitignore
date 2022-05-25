@@ -40,10 +40,4 @@ yarn-debug.log*
 /config/credentials/test.key
 config/credentials/development.yml.enc
 config/credentials/test.yml.enc
-<<<<<<< HEAD
-
-# ignore the db configuration
-/config/database.yml
-=======
 config/database.yml
->>>>>>> cf4a9869357bf9f7870dacee3e86f4c3fd1bb078
