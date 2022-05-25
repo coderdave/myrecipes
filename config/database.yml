@@ -2,14 +2,16 @@ development:
   adapter: postgresql
   database: myrecipes_development
   username: postgres
-  password: <%= Rails.application.credentials.pg[:db_password] %>
+  password: cadce851215
   host: localhost
+  port: 5432
   prepared_statements: false
 
 test:
   adapter: postgresql
   database: myrecipes_test
   username: postgres
-  password: <%= Rails.application.credentials.pg[:db_password] %>
+  password: cadce851215
   host: localhost
+  port: 5432
   prepared_statements: false
