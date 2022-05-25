@@ -40,3 +40,4 @@ yarn-debug.log*
 /config/credentials/test.key
 config/credentials/development.yml.enc
 config/credentials/test.yml.enc
+config/database.yml
