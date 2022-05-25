@@ -41,4 +41,4 @@ yarn-debug.log*
 config/credentials/development.yml.enc
 config/credentials/test.yml.enc
 
-config/database.yml
+/config/database.yml
