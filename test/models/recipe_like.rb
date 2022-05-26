@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RecipeLikes < ActiveSupport::TestCase
+class RecipeLike < ActiveSupport::TestCase
 
   def setup
     @chef = Chef.create!(chefname: "AtDev", email: "mashrur@example.com", password: "password", password_confirmation: "password")
