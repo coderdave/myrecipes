@@ -3,13 +3,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome <%= @chef.chefname %> to MyRecipes the best recipe sharing app ever! </h1>
-    <p>
-      Please click the following link to verify your account:
-    </p>
-    <p>
-      <a href="#" class="icon-link "><%= @url %></a>
-    </p>
-    <p>Thanks for joining to this app!</p>
+  <h1>Welcome <%= @chef.chefname %> to MyRecipes the best recipe sharing app ever! </h1>
+  <p>
+    <a href="#" class="icon-link ">
+      <%= link_to "Please click here to verify your account", @url%>
+    </a>
+  </p>
+  <p>Thanks for joining to this app!</p>  
   </body>
 </html>
