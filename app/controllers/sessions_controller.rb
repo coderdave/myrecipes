@@ -2,15 +2,15 @@ class SessionsController < ApplicationController
   before_action :set_account_verified, only: [:new]
 
   def new
-    byebug
+    # byebug
   end
   
   def create
     chef = Chef.find_by(email: params[:session][:email].downcase)
     #[:emailVerified]
-    logger.debug "Parameter : |#{params[:account_verified].downcase.strip}|"
-    logger.debug "Chef email: |#{chef.email.downcase}|"
-    byebug
+    # logger.debug "Parameter : |#{params[:account_verified].downcase.strip}|"
+    # logger.debug "Chef email: |#{chef.email.downcase}|"
+    # byebug
     if chef && chef.authenticate(params[:session][:password]) && (params[:account_verified]).strip == chef.email
       # params[:account_verified].include?(chef.email)
       ## create a method for this action

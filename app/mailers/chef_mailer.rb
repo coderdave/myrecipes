@@ -5,7 +5,7 @@ class ChefMailer < ApplicationMailer
     @chef = params[:chef]
     @url  = "http://localhost:3000/login?account_verified="+@chef.email
     mail(
-        to: email_address_with_name(@chef.email, @chef.chefname), 
+        to: @chef.email, 
         subject: 'Please Verify MyRecipes Account'
         )
   end
