@@ -10,4 +10,16 @@ class Recipe < ApplicationRecord
 
   default_scope -> { order(updated_at: :desc)}
   has_many_attached :images, dependent: :destroy
+
+  has_one_attached :photo
+  validates :photo, presence: true
+  validate :correct_format_image
+
+  private 
+
+  def correct_format_image
+    if  photo.attached? && !photo.content_type.in?(%w(image/png image/jpeg image/jpg))
+      errors.add(:photo, 'Must be an image file jpg, jpeg, png')
+    end
+  end
 end
