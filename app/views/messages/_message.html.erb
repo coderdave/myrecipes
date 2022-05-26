@@ -4,7 +4,7 @@
   </p>
   <p>
     <%= gravatar_for(message.chef, size: 50) %>  
-    <strong><%= message.chef.chefname.capitalize %></strong>
+    <strong><%= message.chef.name.capitalize %></strong>
     <span class="content">
       <%= simple_format message.content %>
     </span>

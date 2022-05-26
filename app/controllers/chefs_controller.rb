@@ -16,7 +16,7 @@ class ChefsController < ApplicationController
     if @chef.save
       session[:chef_id] = @chef.id
       cookies.signed[:chef_id] = @chef.id
-      flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
+      flash[:success] = "Welcome #{@chef.name} to MyRecipes App!"
       redirect_to chef_path(@chef)
     else
       render 'new'
@@ -50,7 +50,7 @@ class ChefsController < ApplicationController
   private
   
   def chef_params
-    params.require(:chef).permit(:chefname, :email, :password, :password_confirmation)
+    params.require(:chef).permit(:name, :email, :password, :password_confirmation)
   end
   
   def set_chef
