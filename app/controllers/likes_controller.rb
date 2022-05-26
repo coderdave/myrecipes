@@ -6,7 +6,7 @@ before_action :set_likes, only: [:show]
   end
 
   def create
-    @like = Like.new(like: true, recipe_id: recipe_params)
+    @like = Like.new(recipe_id: recipe_params)
     @like.chef = current_chef
     if @like.save
       flash[:success] = "like was created successfully"

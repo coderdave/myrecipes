@@ -17,8 +17,8 @@
     <div class="mb-3">
       <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
         <% cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text} %>
-      <% end %>         
-    </div>    
+      <% end %>
+    </div>
     <%= f.submit class: "btn btn-primary btn-lg" %>
   <% end %>
   <div class="offset-4 colormatch">

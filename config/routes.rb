@@ -20,8 +20,9 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
-  resources :likes
+  #resources :likes
 
+  post '/recipes/:id/likes', to: 'likes#create', as: 'new_like'
 
   # get 'likes/show'
   # get 'likes/new'

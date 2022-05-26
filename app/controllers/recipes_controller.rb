@@ -28,9 +28,9 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    
+
   end
-  
+
   def update
     if @recipe.update(recipe_params)
       flash[:success] = "Recipe was updated successfully!"
@@ -44,6 +44,17 @@ class RecipesController < ApplicationController
     Recipe.find(params[:id]).destroy
     flash[:success] = "Recipe deleted successfully!"
     redirect_to recipes_path
+  end
+
+  def like
+    like = Like.create(like: params[:like], chef: current_chef, recipe: @recipe)
+    if like.valid?
+      flash[:success] = "Your selection was succesful"
+      redirect_to :back
+    else
+      flash[:danger] = "You can only like/dislike a recipe once"
+      redirect_to :back
+    end
   end
 
   private
@@ -60,6 +71,6 @@ class RecipesController < ApplicationController
       if current_chef != @recipe.chef and !current_chef.admin?
         flash[:danger] = "You can only edit or delete your own recipes"
         redirect_to recipes_path
-      end  
+      end
     end
 end
