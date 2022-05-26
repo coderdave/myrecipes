@@ -3,9 +3,9 @@
 <div class="row">
   <%= form_for(@chef, :html => {role: "form"}) do |f| %>
     <div class="col mb-3">
-      <%= f.label :chefname, "Choose Chefname", class: "form-label" %>
+      <%= f.label :name, "Choose name", class: "form-label" %>
       <div class="col-3">
-        <%= f.text_field :chefname, class: "form-control", placeholder: "Enter your name", autofocus: true %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter your name", autofocus: true %>
       </div>
     </div>
     <div class="col mb-3">

@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     @message.chef = current_chef
     if @message.save
       ActionCable.server.broadcast 'chef_chat_room_channel', message: render_message(@message),
-        chef: @message.chef.chefname
+        chef: @message.chef.name
     else
       render 'chatrooms/show'
     end
