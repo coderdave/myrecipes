@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'likes/show'
+  get 'likes/new'
+  get 'likes/create'
+  get 'likes/delete'
   root "pages#home"
   get "pages/home", to: 'pages#home'
 
