@@ -1,7 +1,8 @@
 class LikesController < ApplicationController
-before_action :set_recipe, only: [:show]
+before_action :set_likes, only: [:show]
 
   def show
+
   end
 
   def create
