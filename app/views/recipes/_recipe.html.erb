@@ -25,7 +25,11 @@
           <div class="recipe-actions">
             <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: "btn btn-xs btn-warning" %>
             <%= link_to "Delete this recipe", recipe_path(recipe), method: :delete,data: { confirm: "Are you sure you want to delete this recipe?" },class: "btn btn-xs btn-danger" %>
-            <%= render  'likes/like_button', object: recipe.id, class: "btn btn-xs px-3 btn-outline-primary" %>
+            <% if current_chef.likes.find {|like| like.recipe_id == recipe.id} %>
+              <p>sorry you already liked it!</p>
+            <% else %>
+              <%= render  'likes/like_button', object: recipe.id, class: "btn btn-xs px-3 btn-outline-primary" %>
+            <% end %>  
           </div>
         <% end %>
       </div>
