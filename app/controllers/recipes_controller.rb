@@ -46,17 +46,6 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
-  def like
-    like = Like.create(like: params[:like], chef: current_chef, recipe: @recipe)
-    if like.valid?
-      flash[:success] = "Your selection was succesful"
-      redirect_to :back
-    else
-      flash[:danger] = "You can only like/dislike a recipe once"
-      redirect_to :back
-    end
-  end
-
   private
 
     def set_recipe

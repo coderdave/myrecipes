@@ -1,9 +1,6 @@
 class LikesController < ApplicationController
 before_action :set_likes, only: [:show]
 
-  def show
-
-  end
 
   def create
     @like = Like.new(recipe_id: params[:id])
@@ -16,12 +13,14 @@ before_action :set_likes, only: [:show]
     end
   end
 
-  def update
-
+  def destroy
+    current_chef.likes.find_by(recipe_id: params[:id]).destroy
   end
 
   private
+
     def set_likes
       @likes = Like.all
     end
+
 end
