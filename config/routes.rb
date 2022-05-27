@@ -20,14 +20,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
-  #resources :likes
-
   post '/recipes/:id/likes', to: 'likes#create', as: 'new_like'
   delete '/recipes/:id/unlike', to: 'likes#destroy', as: 'remove_like'
-
-  # get 'likes/show'
-  # get 'likes/new'
-  # get 'likes/create'
-  # get 'likes/delete'
 
 end
