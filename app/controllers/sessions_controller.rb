@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       ##
       session[:chef_id] = chef.id
       cookies.signed[:chef_id] = chef.id
-      flash[:success] = "Account email verified and successfully logged in"
+      flash[:success] = chef.name+", thank you for verifying your account"
       redirect_to chef
     elsif chef && chef.authenticate(params[:session][:password])
       session[:chef_id] = chef.id
