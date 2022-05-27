@@ -4,8 +4,16 @@ class RecipesTest < ActionDispatch::IntegrationTest
   def setup
     @chef = Chef.create!(chefname: "mashrur", email: "mashrur@example.com",
       password: "password", password_confirmation: "password")
-    @recipe = Recipe.create(name: "vegetable saute", description: "great vegetable sautee, add vegetable and oil", chef: @chef)
-    @recipe2 = @chef.recipes.build(name: "chicken saute", description: "great chicken dish")
+    @photo_of_recipe = fixture_file_upload('test/fixtures/files/test.jpg', "image/jpg")
+    @recipe = Recipe.create(
+      name: "vegetable saute", 
+      description: "great vegetable sautee, add vegetable and oil", 
+      photo: @photo_of_recipe, 
+      chef: @chef)
+    @recipe2 = @chef.recipes.build(
+      name: "chicken saute", 
+      description: "great chicken dish", 
+      photo: @photo_of_recipe)
     @recipe2.save
   end
 
@@ -28,6 +36,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_match @recipe.name, response.body
     assert_match @recipe.description, response.body
     assert_match @chef.chefname, response.body
+    assert @recipe.photo.attached?, response.body
     assert_select 'a[href=?]', edit_recipe_path(@recipe), text: "Edit this recipe"
     assert_select 'a[href=?]', recipe_path(@recipe), text: "Delete this recipe"
     assert_select 'a[href=?]', recipes_path, text: "Return to recipes listing"
@@ -39,8 +48,10 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_template 'recipes/new'
     name_of_recipe = "chicken saute"
     description_of_recipe = "add chicken, add vegetables, cook for 20 minutes, serve delicious meal"
+    # photo_of_recipe = fixture_file_upload("test/integration/test.jpg", "image/jpg")
+    photo_of_recipe = fixture_file_upload('test/fixtures/files/test.jpg', "image/jpg")
     assert_difference 'Recipe.count', 1 do
-      post recipes_path, params: { recipe: { name: name_of_recipe, description: description_of_recipe}}
+      post recipes_path, params: { recipe: { name: name_of_recipe, description: description_of_recipe, photo: photo_of_recipe } }
     end
     follow_redirect!
     assert_match name_of_recipe.capitalize, response.body
