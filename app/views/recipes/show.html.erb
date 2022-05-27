@@ -35,7 +35,7 @@
     <% end %>
     <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-sm btn-primary" %>
     <% if current_chef.likes.find {|like| like.recipe_id == @recipe.id } %>
-      <p>sorry you already liked it!</p>
+      <%= render partial: 'likes/dislike_button', locals: { object: @recipe.id }, class: 'py-0' %>
     <% else %>
       <%= render partial: 'likes/like_button', locals: { object: @recipe.id }, class: 'py-0' %>
     <% end %>
