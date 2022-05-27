@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_05_25_161946) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.boolean "account_verified", default: false
   end
 
   create_table "comments", force: :cascade do |t|
