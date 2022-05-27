@@ -23,8 +23,8 @@
         </small>
 
       </p >
-      <strong class="d-flex justify-content-center text-primary ">
-        <%= pluralize(@recipe.likes.count, 'like') %>
+      <strong class="d-flex justify-content-center text-primary" id="likes">
+        <%= render 'likes/likes_counter', object: @recipe %>
       </strong>
     </div>
     </div>

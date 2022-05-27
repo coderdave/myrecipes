@@ -14,10 +14,10 @@
         <% end %>
         <p>
           <span class="quiet">
-            <small>
+            <small id="likes">
               Created <%= time_ago_in_words(recipe.created_at) %> ago by <%= recipe.chef.chefname.capitalize %>
                 | <%= pluralize(recipe.comments.count, 'Comment') %>
-                | <%= pluralize(recipe.likes.count, 'like') %>
+                | <%= render 'likes/likes_counter', object: recipe %>
             </small>
           </span>
         </p>
