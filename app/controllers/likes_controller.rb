@@ -6,7 +6,7 @@ before_action :set_likes, only: [:show]
   end
 
   def create
-    @like = Like.new(recipe_id: recipe_params)
+    @like = Like.new(recipe_id: params[:id])
     @like.chef = current_chef
     if @like.save
       flash[:success] = "like was created successfully"
@@ -23,9 +23,5 @@ before_action :set_likes, only: [:show]
   private
     def set_likes
       @likes = Like.all
-    end
-
-    def recipe_params
-      params.require(:recipe).permit(:id)
     end
 end
