@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:edit, :update, :show]
+  before_action :set_ingredient, only: [:edit, :update, :show, :destroy] #Added destroy here
   before_action :require_admin, except: [:show, :index]
   
   def new
@@ -35,6 +35,12 @@ class IngredientsController < ApplicationController
   
   def index
     @ingredients = Ingredient.paginate(page: params[:page], per_page: 5)
+  end
+
+  def destroy
+    Ingredient.find(params[:id]).destroy
+    flash[:success] = "Ingredient was deleted successfully!"
+    redirect_to ingredients_path
   end
   
   private

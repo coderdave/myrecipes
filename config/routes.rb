@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :ingredients, except: [:destroy]
+  resources :ingredients #remove exlusion of delete action
 
   get '/chat', to: 'chatrooms#show'
 
