@@ -63,7 +63,8 @@ class RecipesTest < ActionDispatch::IntegrationTest
     get new_recipe_path
     assert_template 'recipes/new'
     assert_no_difference 'Recipe.count' do
-      post recipes_path, params: { recipe: { name: " ", description: " " } }
+      @photo_of_recipe_wrong = nil
+      post recipes_path, params: { recipe: { name: " ", description: " ", photo: @photo_of_recipe_wrong } }
     end
     assert_template 'recipes/new'
     assert_select 'div.bg-danger'

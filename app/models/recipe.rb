@@ -24,6 +24,8 @@ class Recipe < ApplicationRecord
   end
 
   def size_photo
-    photo.blob.byte_size > 1000.kilobytes ? errors.add(:photo, 'Must be less than 1 MB') : nil    
+    if photo.attached? && photo.blob.byte_size > 1000.kilobytes
+      errors.add(:photo, 'Must be less than 1 MB')
+    end 
   end
 end
