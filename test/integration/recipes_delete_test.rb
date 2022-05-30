@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecipesDeleteTest < ActionDispatch::IntegrationTest
   def setup
-    @chef = Chef.create!(chefname: "mashrur", email: "mashrur@example.com",
+    @chef = Chef.create!(name: "mashrur", email: "mashrur@example.com",
       password: "password", password_confirmation: "password")
       @photo_of_recipe = fixture_file_upload('test/fixtures/files/test.jpg', "image/jpg")
     @recipe = Recipe.create(name: "vegetable saute", description: "great vegetable sautee, add vegetable and oil", photo: @photo_of_recipe , chef: @chef)

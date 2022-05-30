@@ -3,7 +3,7 @@ require 'test_helper'
 class ChefsShowTest < ActionDispatch::IntegrationTest
   
   def setup
-    @chef = Chef.create!(chefname: "mashrur", email: "mashrur@example.com",
+    @chef = Chef.create!(name: "mashrur", email: "mashrur@example.com",
                         password: "password", password_confirmation: "password")
     @photo_of_recipe = fixture_file_upload('test/fixtures/files/test.jpg', "image/jpg")
     @recipe = Recipe.create(
@@ -26,6 +26,6 @@ class ChefsShowTest < ActionDispatch::IntegrationTest
     assert_match @recipe.description, response.body
     assert_match @recipe2.description, response.body
     assert @recipe.photo.attached?, response.body
-    assert_match @chef.chefname, response.body
+    assert_match @chef.name, response.body
   end
 end

@@ -14,9 +14,10 @@ class ChefsController < ApplicationController
   def create
     @chef = Chef.new(chef_params)
     if @chef.save
+      ChefMailer.with(chef: @chef).welcome_email.deliver_later
       session[:chef_id] = @chef.id
       cookies.signed[:chef_id] = @chef.id
-      flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
+      flash[:success] = "Welcome #{@chef.name} to MyRecipes App!"
       redirect_to chef_path(@chef)
     else
       render 'new'
@@ -46,11 +47,11 @@ class ChefsController < ApplicationController
       redirect_to chefs_path
     end
   end
-  
+
   private
   
   def chef_params
-    params.require(:chef).permit(:chefname, :email, :password, :password_confirmation)
+    params.require(:chef).permit(:name, :email, :password, :password_confirmation)
   end
   
   def set_chef
