@@ -15,8 +15,7 @@ consumer.subscriptions.create("RecipeCommentsChannel", {
     $("#recipe_comment").val("");
 
     if ($("#messages .comment-fix").length == 1) {
-      $('h3.comments_title').empty()
-      $('h3.comments_title').text('Prior Comments:')
+      $('h3.comments_title').empty().text('Prior Comments:')
     }
   },
 });
