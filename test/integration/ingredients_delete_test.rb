@@ -14,7 +14,7 @@ class IngredientsDeleteTest < ActionDispatch::IntegrationTest
     sign_in_as(@admin, "password")
     get edit_ingredient_path(@ingredient)
     assert_template 'ingredients/edit'
-    assert_select 'a[href=?]', ingredient_path(@ingredient), text: "Delete ingredient"
+    assert_select 'a[href=?]', ingredient_path(@ingredient), text: "Delete Ingredient"
     assert_difference 'Ingredient.count', -1 do
       delete ingredient_path(@ingredient)
     end
