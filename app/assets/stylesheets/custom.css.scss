@@ -32,6 +32,18 @@ p.lead {
   border-color: #073b15;
 }
 
+.btn.btn-lg.btn-danger{
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn.btn-lg.btn-danger:hover{
+  background-color: #ac2b38;
+  border-color: #ac2b38;
+}
+
+
 .center {
   text-align: center;
 }

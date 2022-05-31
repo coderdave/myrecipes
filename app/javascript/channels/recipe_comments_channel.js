@@ -11,7 +11,11 @@ consumer.subscriptions.create("RecipeCommentsChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    $("#messages .comment-fix:first").prepend(data);
+    $("#messages").prepend(data);
     $("#recipe_comment").val("");
+
+    if ($("#messages .comment-fix").length == 1) {
+      $('h3.comments_title').empty().text('Prior Comments:')
+    }
   },
 });
