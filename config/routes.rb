@@ -19,4 +19,6 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
+  get '/verify', to: 'sessions#verify'
+
 end

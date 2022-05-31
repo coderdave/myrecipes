@@ -90,4 +90,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
+  #url for link account verified
+  ENV['URL_AUTH'] = 'http://localhost:3000/'
+
 end
