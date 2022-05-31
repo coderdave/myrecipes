@@ -14,7 +14,7 @@
       <div class="col mb-3">
         <%= f.submit(@ingredient.new_record? ? "Add Ingredient" : "Update Ingredient",
                                       class: "btn btn-primary btn-lg") %>
-        <% if  logged_in? && (current_chef.admin?) && (@ingredient.new_record? ==false) %> 
+        <% if  logged_in? && current_chef.admin? && @ingredient.new_record? ==false %> 
           <%= link_to "Delete Ingredient", ingredient_path(@ingredient), method: :delete,
             data: { confirm: "Are you sure you want to delete this ingredient from #{pluralize(RecipeIngredient.where(ingredient_id:@ingredient).count, "recipe")}?"  },
             class: "btn btn-lg btn-danger" %> 

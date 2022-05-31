@@ -28,4 +28,9 @@ class IngredientsDeleteTest < ActionDispatch::IntegrationTest
     assert RecipeIngredient.where(recipe_id: @recipe).count == 0
   end
   
+  test "Non admin users should not be able to delete ingredients" do
+    delete ingredient_path(@ingredient_2)
+    assert Ingredient.where(id: @ingredient_2).count > 0
+  end
+  
 end

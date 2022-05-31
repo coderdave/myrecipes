@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:edit, :update, :show, :destroy] #Added destroy here
+  before_action :set_ingredient, only: [:edit, :update, :show, :destroy] 
   before_action :require_admin, except: [:show, :index]
   
   def new
