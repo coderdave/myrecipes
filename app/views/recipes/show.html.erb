@@ -34,11 +34,13 @@
       <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete this recipe?" },  class: "btn btn-sm btn-danger" %>
     <% end %>
     <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-sm btn-primary" %>
-    <% if current_chef.likes.find {|like| like.recipe_id == @recipe.id } %>
-      <%= render partial: 'likes/dislike_button', locals: { object: @recipe.id }, class: 'py-0' %>
-    <% else %>
-      <%= render partial: 'likes/like_button', locals: { object: @recipe.id }, class: 'py-0' %>
-    <% end %>
+    <% if logged_in? %>
+      <% if current_chef.likes.find {|like| like.recipe_id == @recipe.id } %>
+        <%= render partial: 'likes/dislike_button', locals: { object: @recipe.id }, class: 'py-0' %>
+      <% else %>
+        <%= render partial: 'likes/like_button', locals: { object: @recipe.id }, class: 'py-0' %>
+      <% end %>
+    <% end %>  
     <div>
 </div>
   </div>

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @like.chef = current_chef
     if @like.save
-      ActionCable.server.broadcast 'likes_channel', render(partial: 'likes/likes_counter', object: @recipe)
+      render json: @recipe
     end
   end
 
