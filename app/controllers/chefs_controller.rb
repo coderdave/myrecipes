@@ -14,6 +14,7 @@ class ChefsController < ApplicationController
   def create
     @chef = Chef.new(chef_params)
     if @chef.save
+      ChefMailer.with(chef: @chef).welcome_email.deliver_later
       session[:chef_id] = @chef.id
       cookies.signed[:chef_id] = @chef.id
       flash[:success] = "Welcome #{@chef.name} to MyRecipes App!"
@@ -46,7 +47,7 @@ class ChefsController < ApplicationController
       redirect_to chefs_path
     end
   end
-  
+
   private
   
   def chef_params
