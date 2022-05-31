@@ -3,7 +3,7 @@
 <div class="col-8 offset-2 card card-body bg-light">
   <div class="show-image" align="center">
     <% if @recipe.photo.attached? %>
-      <%= image_tag(recipe.photo) %> 
+      <%= image_tag(@recipe.photo) %> 
     <% else %>
       <%= image_tag("not-found.png") %>
     <% end %> 
