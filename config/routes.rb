@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root "pages#home"
   get "pages/home", to: 'pages#home'
 
@@ -18,5 +19,8 @@ Rails.application.routes.draw do
   get '/chat', to: 'chatrooms#show'
 
   resources :messages, only: [:create]
+
+  post '/recipes/:id/likes', to: 'likes#create', as: 'new_like'
+  delete '/recipes/:id/unlike', to: 'likes#destroy', as: 'remove_like'
 
 end
