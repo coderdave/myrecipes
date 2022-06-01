@@ -35,7 +35,7 @@
                         <li>
                             <%= link_to "All Ingredients", ingredients_path, class: "dropdown-item" %>
                         </li>
-                        <% Ingredient.all.each do |ingredient| %>
+                        <% Ingredient.menu_items.each do |ingredient| %>
                         <li>
                             <%= link_to ingredient.name.capitalize, ingredient_path(ingredient), class: "dropdown-item" %>
                         </li>
