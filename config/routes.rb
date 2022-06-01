@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy]
   end
 
   get '/signup', to: 'chefs#new'
@@ -19,8 +20,4 @@ Rails.application.routes.draw do
   get '/chat', to: 'chatrooms#show'
 
   resources :messages, only: [:create]
-
-  post '/recipes/:id/likes', to: 'likes#create', as: 'new_like'
-  delete '/recipes/:id/unlike', to: 'likes#destroy', as: 'remove_like'
-
 end
