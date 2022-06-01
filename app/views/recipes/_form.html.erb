@@ -19,7 +19,14 @@
         <% cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text} %>
       <% end %>         
     </div>    
-    <%= f.submit class: "btn btn-primary btn-lg" %>
+    <div class="form-group">
+    <br>
+      <%= f.file_field(:photo, class: "form-control-file") %>
+    </div>
+    <div class="mt-3">
+       <%= f.submit class: "btn btn-primary btn-lg" %>
+     </div>
+    
   <% end %>
   <div class="offset-4 colormatch">
     [ <%= link_to "Cancel request and return to recipes listing", recipes_path %> ]

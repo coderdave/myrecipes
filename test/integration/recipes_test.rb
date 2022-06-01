@@ -4,8 +4,16 @@ class RecipesTest < ActionDispatch::IntegrationTest
   def setup
     @chef = Chef.create!(name: "mashrur", email: "mashrur@example.com",
       password: "password", password_confirmation: "password")
-    @recipe = Recipe.create(name: "vegetable saute", description: "great vegetable sautee, add vegetable and oil", chef: @chef)
-    @recipe2 = @chef.recipes.build(name: "chicken saute", description: "great chicken dish")
+    @photo_of_recipe = fixture_file_upload('test/fixtures/files/test.jpg', "image/jpg")
+    @recipe = Recipe.create(
+      name: "vegetable saute", 
+      description: "great vegetable sautee, add vegetable and oil", 
+      photo: @photo_of_recipe, 
+      chef: @chef)
+    @recipe2 = @chef.recipes.build(
+      name: "chicken saute", 
+      description: "great chicken dish", 
+      photo: @photo_of_recipe)
     @recipe2.save
   end
 
@@ -27,6 +35,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_template 'recipes/show'
     assert_match @recipe.name, response.body
     assert_match @recipe.description, response.body
+    assert @recipe.photo.attached?, response.body
     assert_match @chef.name, response.body
     assert_select 'a[href=?]', edit_recipe_path(@recipe), text: "Edit this recipe"
     assert_select 'a[href=?]', recipe_path(@recipe), text: "Delete this recipe"
@@ -39,8 +48,10 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_template 'recipes/new'
     name_of_recipe = "chicken saute"
     description_of_recipe = "add chicken, add vegetables, cook for 20 minutes, serve delicious meal"
+    # photo_of_recipe = fixture_file_upload("test/integration/test.jpg", "image/jpg")
+    photo_of_recipe = fixture_file_upload('test/fixtures/files/test.jpg', "image/jpg")
     assert_difference 'Recipe.count', 1 do
-      post recipes_path, params: { recipe: { name: name_of_recipe, description: description_of_recipe}}
+      post recipes_path, params: { recipe: { name: name_of_recipe, description: description_of_recipe, photo: photo_of_recipe } }
     end
     follow_redirect!
     assert_match name_of_recipe.capitalize, response.body
@@ -52,7 +63,8 @@ class RecipesTest < ActionDispatch::IntegrationTest
     get new_recipe_path
     assert_template 'recipes/new'
     assert_no_difference 'Recipe.count' do
-      post recipes_path, params: { recipe: { name: " ", description: " " } }
+      @photo_of_recipe_wrong = nil
+      post recipes_path, params: { recipe: { name: " ", description: " ", photo: @photo_of_recipe_wrong } }
     end
     assert_template 'recipes/new'
     assert_select 'div.bg-danger'
