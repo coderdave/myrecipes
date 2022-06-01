@@ -1,15 +1,18 @@
-development:
+
+default: &default
   adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
   database: myrecipes_development
-  username: postgres
-  password: <%= Rails.application.credentials.pg[:db_password] %>
-  host: localhost
-  prepared_statements: false
 
 test:
-  adapter: postgresql
+  <<: *default
   database: myrecipes_test
-  username: postgres
-  password: <%= Rails.application.credentials.pg[:db_password] %>
-  host: localhost
-  prepared_statements: false
+production:
+  <<: *default
+  database: myrecipes_production
+  username: myrecipes
+  password: <%= ENV['MYRECIPES_DATABASE_PASSWORD'] %>
