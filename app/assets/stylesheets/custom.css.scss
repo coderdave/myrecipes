@@ -26,10 +26,7 @@ p.lead {
   color: black;
   font-weight: bold;
 }
-.jumbotron a{
-  background-color: #073b15;
-  border-color: #073b15;
-}
+
 
 .btn.btn-lg.btn-danger{
   color: #fff;
@@ -42,6 +39,10 @@ p.lead {
   border-color: #ac2b38;
 }
 
+.custom_jumbotron{
+  background-color: #073b15 !important;
+  border-color: #073b15 !important;
+}
 
 .center {
   text-align: center;
