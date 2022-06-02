@@ -5,6 +5,7 @@ class LikesController < ApplicationController
     @like = Like.new(recipe_id: params[:recipe_id])
     @recipe = Recipe.find(params[:recipe_id])
     @like.chef = current_chef
+    @like.save
   end
 
   def destroy
