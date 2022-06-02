@@ -1,0 +1,5 @@
+console.log("<%= @recipe.name %>")
+
+$("#likes_<%= @recipe.id %>").html('<%= @recipe.likes.count %>&nbsp;');
+$("#like-word_<%= @recipe.id %>").html("<%= @recipe.likes.count == 1 ? 'like' : 'likes' %>");
+$("#toggle-like-button-<%= @recipe.id %>").html("<%= j (render 'buttons', object: @recipe) %>")
