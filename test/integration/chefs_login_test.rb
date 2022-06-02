@@ -31,4 +31,11 @@ class ChefsLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", chef_path(@chef)
     assert_select "a[href=?]", edit_chef_path(@chef)
   end
+  
+  test "valid account email verified" do
+    get verify_path, params: { account_verified: @chef.auth_token }
+    assert_not @chef.account_verified
+    assert_not flash.empty?
+  end
+
 end

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :set_account_verified, only: [:new]
+  before_action :set_account_verified, only: [:verify]
 
   def new
     
@@ -7,14 +7,7 @@ class SessionsController < ApplicationController
   
   def create
     chef = Chef.find_by(email: params[:session][:email].downcase)
-    if chef && chef.authenticate(params[:session][:password]) && (params[:account_verified]) == chef.email
-      chef.account_verified = true
-      chef.save!
-      session[:chef_id] = chef.id
-      cookies.signed[:chef_id] = chef.id
-      flash[:success] = chef.name+", thank you for verifying your account"
-      redirect_to chef
-    elsif chef && chef.authenticate(params[:session][:password])
+    if chef && chef.authenticate(params[:session][:password])
       session[:chef_id] = chef.id
       cookies.signed[:chef_id] = chef.id
       flash[:success] = "You have successfully logged in"
@@ -31,6 +24,18 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
   
+  def verify
+    chef = Chef.find_by(auth_token:  @account_verified)
+    if @account_verified == chef.auth_token
+      chef.account_verified = true
+      chef.save!
+      flash[:success] = chef.name+", Thank you for verifying your account"
+    else
+      flash.now[:danger] = "There was something wrong with your account verification"
+      render 'new'
+    end
+  end
+
   private
   
   def set_account_verified

@@ -1,10 +1,12 @@
-<% obj.each do |recipe| %>
-  <div class="row">
-    <div class="col-1">
+<% obj.with_attached_photo.each do |recipe| %>
+<div class="row">
+  <div class="col-md-2">
+    <div class="mt-3">
       <section class="chef_info">
         <%= gravatar_for(recipe.chef, size: 120) %>
       </section>
     </div>
+
     <div class="col offset-1">
       <div class="card card-body bg-light">
         <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
@@ -32,8 +34,16 @@
               <%= render  'likes/buttons', object: recipe, class: "btn btn-sm px-3 btn-outline-primary" %>
             <span>  
           </div>
+             <div class="show-all-image col-md-4"> 
+               <% if recipe.photo.attached? %>
+                <%= image_tag(recipe.photo) %> 
+                <% else %>
+                  <%= image_tag("not-found.png") %>
+                <% end %>
+             </div>
+           </div>
+         </div>
       </div>
-    </div>
   </div>
   <p />
 <% end %>

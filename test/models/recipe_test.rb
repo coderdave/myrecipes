@@ -35,4 +35,9 @@ class RecipeTest < ActiveSupport::TestCase
     @recipe.description = "a" * 501
     assert_not @recipe.valid?
   end
+
+  test "Photo must be less than 1 MB" do
+    @recipe.photo.fixture_file_upload('test/fixtures/files/wrong_test.jpg', "image/jpg")
+    assert @recipe.valid?
+  end
 end
