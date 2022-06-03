@@ -32,8 +32,7 @@
 
       </p >
       <strong class="d-flex justify-content-center text-primary">
-        <span id="likes_<%= @recipe.id %>"><%= @recipe.likes.count %>&nbsp;</span>
-        <span id="like-word_<%= @recipe.id %>"><%= @recipe.likes.count == 1 ? 'like' : 'likes' %></span>
+        <span id="likes_<%= @recipe.id %>"><%= pluralize(@recipe.likes.count, 'Like') %></span>
       </strong>
 
     </div>
