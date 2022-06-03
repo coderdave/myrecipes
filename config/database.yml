@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   database: myrecipes_development
   username: postgres
-  password: 123456
+  password: <%= Rails.application.credentials.pg[:db_password] %>
   host: localhost
   prepared_statements: false
 
@@ -10,6 +10,6 @@ test:
   adapter: postgresql
   database: myrecipes_test
   username: postgres
-  password: 123456
+  password: <%= Rails.application.credentials.pg[:db_password] %>
   host: localhost
   prepared_statements: false
