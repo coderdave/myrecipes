@@ -2,10 +2,10 @@ class LikesController < ApplicationController
   before_action :require_user
 
   def create
-    @like = Like.new(recipe_id: params[:recipe_id])
+    like = Like.new(recipe_id: params[:recipe_id])
     @recipe = Recipe.find(params[:recipe_id])
-    @like.chef = current_chef
-    unless @like.save
+    like.chef = current_chef
+    unless like.save
       flash[:danger] = "Like can't be save at the moment."
     end
   end
