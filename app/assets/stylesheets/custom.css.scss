@@ -18,7 +18,7 @@ nav.navbar {
 
 .jumbotron {
   background-color: hsl(0, 0%, 94%);
-  background-image: asset_url("cover_image.jpg");
+  background-image: asset_url("cover_image.jpg") !important;
 }
 
 .jumbotron .display-4,
