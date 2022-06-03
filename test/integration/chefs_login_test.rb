@@ -36,6 +36,10 @@ class ChefsLoginTest < ActionDispatch::IntegrationTest
     get verify_path, params: { account_verified: @chef.auth_token }
     assert_not @chef.account_verified
     assert_not flash.empty?
+    assert_select "a[href=?]", login_path, count: 0
+    assert_select "a[href=?]", logout_path
+    assert_select "a[href=?]", chef_path(@chef)
+    assert_select "a[href=?]", edit_chef_path(@chef)
   end
 
 end

@@ -3,4 +3,8 @@ class ChefMailerPreview < ActionMailer::Preview
     def welcome_email
       ChefMailer.with(chef: Chef.last).welcome_email
     end
-end
+
+    def reminder_email
+      ChefMailer.with(chef: Chef.last).reminder_email
+    end
+  end

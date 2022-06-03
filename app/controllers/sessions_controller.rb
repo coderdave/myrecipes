@@ -29,6 +29,8 @@ class SessionsController < ApplicationController
     if @account_verified == chef.auth_token
       chef.account_verified = true
       chef.save!
+      session[:chef_id] = chef.id
+      cookies.signed[:chef_id] = chef.id
       flash[:success] = chef.name+", Thank you for verifying your account"
     else
       flash.now[:danger] = "There was something wrong with your account verification"

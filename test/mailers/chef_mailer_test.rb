@@ -15,4 +15,6 @@ class ChefMailerTest < ActionMailer::TestCase
     assert_match @chef.auth_token, mail.body.encoded
   end
 
+  ## pending to add test for REMINDER EMAIL story 11274
+
 end

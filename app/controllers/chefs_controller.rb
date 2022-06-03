@@ -15,6 +15,10 @@ class ChefsController < ApplicationController
     @chef = Chef.new(chef_params)
     if @chef.save
       ChefMailer.with(chef: @chef).welcome_email.deliver_later
+      ChefMailer.with(chef: @chef).reminder_email.deliver_later(wait: 2.hours)
+      # (pending) add logic to validate if the reminder email has been sent sucessfully then should save the value 1
+      @chef.reminder_sent = 1
+      @chef.save
       session[:chef_id] = @chef.id
       cookies.signed[:chef_id] = @chef.id
       flash[:success] = "Welcome #{@chef.name} to MyRecipes App!"
