@@ -2,7 +2,7 @@ require "test_helper"
 
 class LikeTest < ActiveSupport::TestCase
   def setup
-    @chef = Chef.create!(chefname: "AtDev", email: "mashrur@example.com", password: "password", password_confirmation: "password")
+    @chef = Chef.create!(name: "AtDev", email: "mashrur@example.com", password: "password", password_confirmation: "password")
     @recipe = Recipe.create!(name:"apples", description: "Any description", chef_id: @chef.id )
     @recipe_likes = Like.new(chef_id: @chef.id, recipe_id: @recipe.id)
   end
