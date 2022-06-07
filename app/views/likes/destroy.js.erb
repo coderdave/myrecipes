@@ -1,0 +1,2 @@
+$("#likes_<%= @recipe.id %>").html("<%= pluralize(@recipe.likes.count, 'Like') %>");
+$("#toggle-like-button-<%= @recipe.id %>").html("<%= j (render 'buttons', object: @recipe) %>")

@@ -1,0 +1,16 @@
+<% if logged_in? %>
+  <% if current_chef.likes.find {|like| like.recipe_id == object.id} %>
+    <% like = current_chef.likes.find {|like| like.recipe_id == object.id} %>
+    <%= link_to recipe_like_path(recipe_id: object.id, id: like.id), class: "dislike-button-#{object.id}", remote: true, method: :delete do %>
+      <button class="btn btn-sm active px-3 btn-outline-primary">
+        <i class="bi bi-hand-thumbs-up-fill"></i>
+      </button>
+    <% end %>
+  <% else %>
+    <%= link_to recipe_likes_path(object), remote: true, class: "like-button-#{object.id}", method: :post do %>
+      <button class="btn btn-sm px-3 btn-outline-primary">
+        <i class="bi bi-hand-thumbs-up"></i>
+      </button>
+    <% end %>
+  <% end %>
+<% end %>

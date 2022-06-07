@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+
   root "pages#home"
   get "pages/home", to: 'pages#home'
 
   resources :recipes do
     resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy]
   end
 
   get '/signup', to: 'chefs#new'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   get '/chat', to: 'chatrooms#show'
 
   resources :messages, only: [:create]
+
 
   get '/verify', to: 'sessions#verify'
 
